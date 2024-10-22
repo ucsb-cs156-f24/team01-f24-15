@@ -1,8 +1,6 @@
-# STARTER-team01
+# team01-f24-15
 
 Instructions: <https://ucsb-cs156.github.io/f24/lab/team01.html>
-
-TODO: change heading above to your repo name, e.g. `# team01-f24-17`
 
 TODO: Add a link to the deployed Dokku app for your team here, e.g.
 
@@ -15,12 +13,12 @@ TODO: Fill in this table with correct information.
 
 | Table                     | Name         | Github Id |
 |---------------------------|--------------|-----------|
-| UCSBDiningCommonsMenuItem |              |           |
-| UCSBOrganization          |              |           |
-| RecommendationRequest     |              |           |
-| MenuItemReview            |              |           |
-| HelpRequest               |              |           |
-| Articles                  |              |           |
+| UCSBDiningCommonsMenuItem | Cooper       |           |
+| UCSBOrganization          | Ria          |           |
+| RecommendationRequest     | Sophia       |           |
+| MenuItemReview            | Bhavya       |           |
+| HelpRequest               | Kailai       |           |
+| Articles                  | Calvin       | haohuant  |
 
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work
