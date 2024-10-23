@@ -80,12 +80,15 @@ public class ArticlesControllerTests extends ControllerTestCase {
         @Test
         public void logged_in_user_can_get_all_articles() throws Exception {
 
+                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt2 = LocalDateTime.parse("2022-01-04T00:00:00");
+
                 Articles article1 = new Articles();
                                 article1.setTitle("article1");
                                 article1.setUrl("article1.com");
                                 article1.setExplanation("article 1 says");
                                 article1.setEmail("thisadmin1@gmail.com");
-                                article1.setDateAdded("20241119");
+                                article1.setDateAdded(ldt1);
                 
 
                 Articles article2 = new Articles();
@@ -93,7 +96,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                                 article2.setUrl("article2.com");
                                 article2.setExplanation("article 2 says");
                                 article2.setEmail("thisadmin2@gmail.com");
-                                article2.setDateAdded("20241120");
+                                article2.setDateAdded(ldt2);
 
                 ArrayList<Articles> expectedArticles = new ArrayList<>();
                 expectedArticles.addAll(Arrays.asList(article1, article2));
@@ -114,20 +117,22 @@ public class ArticlesControllerTests extends ControllerTestCase {
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void an_admin_user_can_post_a_new_ucsbdate() throws Exception {
+        public void an_admin_user_can_post_a_new_article() throws Exception {
+
+                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 Articles article1 = new Articles();
                                 article1.setTitle("article1");
                                 article1.setUrl("article1.com");
                                 article1.setExplanation("article1");
                                 article1.setEmail("thisadmin1@gmail.com");
-                                article1.setDateAdded("20241119");
+                                article1.setDateAdded(ldt1);
 
                 when(articlesRepository.save(eq(article1))).thenReturn(article1);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/Articles/post?title=article1&url=article1.com&explanation=article1&email=thisadmin1@gmail.com&dateAdded=20241119")
+                                post("/api/Articles/post?title=article1&url=article1.com&explanation=article1&email=thisadmin1@gmail.com&dateAdded=2022-01-03T00:00:00")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
