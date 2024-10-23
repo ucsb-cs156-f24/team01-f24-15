@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team01-f24-15
 owner: ucsb-cs156-f24
 repo_name: team01-f24-15
-pull_requests: []
+pull_requests: [{"author":{"id":"MDQ6VXNlcjU0NDg5MTI4","is_bot":false,"login":"HiDropsy","name":""},"headRefName":"team01-dev-hidropsy-HelpRequest-create-db","number":48,"title":"#33 Create HelpRequestController, add GET (index) and POST (create) done","url":"https://github.com/ucsb-cs156-f24/team01-f24-15/pull/48"}]
