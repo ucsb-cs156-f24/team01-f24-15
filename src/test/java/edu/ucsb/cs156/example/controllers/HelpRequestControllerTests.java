@@ -228,7 +228,7 @@ public class HelpRequestControllerTests extends ControllerTestCase {
                                 .requesterEmail("admin@example.com")
                                 .teamId("adminTeam")
                                 .tableOrBreakoutRoom("Breakout Room 1")
-                                .requestTime(updatedRequestTime) // 更新后的requestTime
+                                .requestTime(updatedRequestTime) // requestTime
                                 .explanation("Urgent help needed")
                                 .solved(true)
                                 .build();
