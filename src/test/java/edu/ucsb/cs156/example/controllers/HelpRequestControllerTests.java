@@ -290,4 +290,57 @@ public class HelpRequestControllerTests extends ControllerTestCase {
                 assertEquals("HelpRequest with id 1 not found", json.get("message"));
         }
 
+        // Tests for DELETE /api/helprequest
+
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_can_delete_existing_helprequest() throws Exception {
+                // arrange
+                LocalDateTime requestTime = LocalDateTime.parse("2024-10-22T18:11:56");
+
+                HelpRequest helpRequest = HelpRequest.builder()
+                                .requesterEmail("user@example.com")
+                                .teamId("team01")
+                                .tableOrBreakoutRoom("Table 1")
+                                .requestTime(requestTime)
+                                .explanation("Need help with setup")
+                                .solved(false)
+                                .build();
+
+                when(helpRequestRepository.findById(eq(1L))).thenReturn(Optional.of(helpRequest));
+
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/helprequest?id=1")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
+
+                // assert
+                verify(helpRequestRepository, times(1)).findById(1L);
+                verify(helpRequestRepository, times(1)).delete(helpRequest);
+                String expectedJson = "{\"message\":\"HelpRequest with id 1 deleted\"}";
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+        }
+
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void admin_tries_to_delete_non_existent_helprequest_and_gets_404() throws Exception {
+                // arrange
+                when(helpRequestRepository.findById(eq(1L))).thenReturn(Optional.empty());
+
+                // act
+                MvcResult response = mockMvc.perform(
+                                delete("/api/helprequest?id=1")
+                                                .with(csrf()))
+                                .andExpect(status().isNotFound()).andReturn();
+
+                // assert
+                verify(helpRequestRepository, times(1)).findById(1L);
+                String responseString = response.getResponse().getContentAsString();
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("EntityNotFoundException", json.get("type"));
+                assertEquals("HelpRequest with id 1 not found", json.get("message"));
+        }
+
 }

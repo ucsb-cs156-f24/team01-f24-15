@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -69,7 +70,6 @@ public class HelpRequestController extends ApiController {
         return helpRequest;
     }
 
-
     /**
      * Create a new help request
      * 
@@ -88,7 +88,7 @@ public class HelpRequestController extends ApiController {
             @Parameter(name = "requesterEmail") @RequestParam String requesterEmail,
             @Parameter(name = "teamId") @RequestParam String teamId,
             @Parameter(name = "tableOrBreakoutRoom") @RequestParam String tableOrBreakoutRoom,
-            @Parameter(name="requestTime", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("requestTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime,
+            @Parameter(name = "requestTime", description = "date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("requestTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime,
             @Parameter(name = "explanation") @RequestParam String explanation,
             @Parameter(name = "solved") @RequestParam boolean solved)
             throws JsonProcessingException {
@@ -108,7 +108,6 @@ public class HelpRequestController extends ApiController {
 
         return savedHelpRequest;
     }
-
 
     /**
      * Update a single help request
@@ -137,5 +136,23 @@ public class HelpRequestController extends ApiController {
         helpRequestRepository.save(helpRequest);
 
         return helpRequest;
+    }
+
+    /**
+     * Delete a HelpRequest
+     * 
+     * @param id the id of the help request to delete
+     * @return a message indicating the help request was deleted
+     */
+    @Operation(summary = "Delete a HelpRequest")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteHelpRequest(
+            @Parameter(name = "id") @RequestParam Long id) {
+        HelpRequest helpRequest = helpRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
+
+        helpRequestRepository.delete(helpRequest);
+        return genericMessage("HelpRequest with id %s deleted".formatted(id));
     }
 }
