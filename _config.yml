@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team01-f24-15
 owner: ucsb-cs156-f24
 repo_name: team01-f24-15
-pull_requests: [{"author":{"id":"MDQ6VXNlcjY0MzQwNDE3","is_bot":false,"login":"ranjanbhavya","name":""},"headRefName":"Bhavya-MenuItemReviews","number":47,"title":"Created MenuItemReviews database ","url":"https://github.com/ucsb-cs156-f24/team01-f24-15/pull/47"},{"author":{"id":"MDQ6VXNlcjY3MjQ3MzM0","is_bot":false,"login":"riasinha","name":""},"headRefName":"ria--UCSBOrganization-create-db","number":46,"title":"Created UCSBorganizations database and deployed to dokku","url":"https://github.com/ucsb-cs156-f24/team01-f24-15/pull/46"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjY3MjQ3MzM0","is_bot":false,"login":"riasinha","name":""},"headRefName":"ria--UCSBOrganization-create-db","number":46,"title":"Created UCSBorganizations database and deployed to dokku","url":"https://github.com/ucsb-cs156-f24/team01-f24-15/pull/46"}]
