@@ -82,9 +82,9 @@ public class UCSBDatesController extends ApiController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDate postUCSBDate(
-            @Parameter(name = "quarterYYYYQ") @RequestParam String quarterYYYYQ,
-            @Parameter(name = "name") @RequestParam String name,
-            @Parameter(name = "localDateTime", description = "date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
+            @Parameter(name="quarterYYYYQ") @RequestParam String quarterYYYYQ,
+            @Parameter(name="name") @RequestParam String name,
+            @Parameter(name="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
