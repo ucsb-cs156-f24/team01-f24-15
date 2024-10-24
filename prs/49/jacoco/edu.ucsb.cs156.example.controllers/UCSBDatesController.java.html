@@ -45,7 +45,7 @@ import java.time.LocalDateTime;
      * 
      * @return an iterable of UCSBDate
      */
-    @Operation(summary= &quot;List all ucsb dates&quot;)
+    @Operation(summary = &quot;List all ucsb dates&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;/all&quot;)
     public Iterable&lt;UCSBDate&gt; allUCSBDates() {
@@ -59,11 +59,11 @@ import java.time.LocalDateTime;
      * @param id the id of the date
      * @return a UCSBDate
      */
-    @Operation(summary= &quot;Get a single date&quot;)
+    @Operation(summary = &quot;Get a single date&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;&quot;)
     public UCSBDate getById(
-            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+            @Parameter(name = &quot;id&quot;) @RequestParam Long id) {
 <span class="fc" id="L67">        UCSBDate ucsbDate = ucsbDateRepository.findById(id)</span>
 <span class="fc" id="L68">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDate.class, id));</span>
 
@@ -78,13 +78,13 @@ import java.time.LocalDateTime;
      * @param localDateTime the date
      * @return the saved ucsbdate
      */
-    @Operation(summary= &quot;Create a new date&quot;)
+    @Operation(summary = &quot;Create a new date&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PostMapping(&quot;/post&quot;)
     public UCSBDate postUCSBDate(
             @Parameter(name=&quot;quarterYYYYQ&quot;) @RequestParam String quarterYYYYQ,
             @Parameter(name=&quot;name&quot;) @RequestParam String name,
-            @Parameter(name=&quot;localDateTime&quot;, description=&quot;date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)&quot;) @RequestParam(&quot;localDateTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
+            @Parameter(name=&quot;date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)&quot;) @RequestParam(&quot;localDateTime&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -108,11 +108,11 @@ import java.time.LocalDateTime;
      * @param id the id of the date to delete
      * @return a message indicating the date was deleted
      */
-    @Operation(summary= &quot;Delete a UCSBDate&quot;)
+    @Operation(summary = &quot;Delete a UCSBDate&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @DeleteMapping(&quot;&quot;)
     public Object deleteUCSBDate(
-            @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+            @Parameter(name = &quot;id&quot;) @RequestParam Long id) {
 <span class="fc" id="L116">        UCSBDate ucsbDate = ucsbDateRepository.findById(id)</span>
 <span class="fc" id="L117">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBDate.class, id));</span>
 
@@ -127,11 +127,11 @@ import java.time.LocalDateTime;
      * @param incoming the new date
      * @return the updated date object
      */
-    @Operation(summary= &quot;Update a single date&quot;)
+    @Operation(summary = &quot;Update a single date&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PutMapping(&quot;&quot;)
     public UCSBDate updateUCSBDate(
-            @Parameter(name=&quot;id&quot;) @RequestParam Long id,
+            @Parameter(name = &quot;id&quot;) @RequestParam Long id,
             @RequestBody @Valid UCSBDate incoming) {
 
 <span class="fc" id="L137">        UCSBDate ucsbDate = ucsbDateRepository.findById(id)</span>
