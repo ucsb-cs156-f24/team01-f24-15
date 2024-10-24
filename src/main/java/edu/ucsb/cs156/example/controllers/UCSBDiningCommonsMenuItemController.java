@@ -119,7 +119,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
      * @param incoming the new item
      * @return the updated item object
      */
-    /**
     @Operation(summary= "Update a single item")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
@@ -138,5 +137,4 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
         return ucsbdiningcommonmenuitem;
     }
-    */
 }
