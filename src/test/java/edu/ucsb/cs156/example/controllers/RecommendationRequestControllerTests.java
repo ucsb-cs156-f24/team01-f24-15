@@ -77,6 +77,13 @@ public class RecommendationRequestControllerTests extends ControllerTestCase{
         assertEquals(expectedJson, responseString);
         
     }
+
+    @Test
+        public void logged_out_users_cannot_get_by_id() throws Exception {
+                mockMvc.perform(get("/api/recommendationrequest?id=7"))
+                                .andExpect(status().is(403)); // logged out users can't get by id
+        }
+
     // POST
 
     @Test
