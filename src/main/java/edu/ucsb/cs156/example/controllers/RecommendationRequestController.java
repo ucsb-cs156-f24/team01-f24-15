@@ -86,4 +86,27 @@ public class RecommendationRequestController extends ApiController {
 
         return recommendationRequest;
     }
+
+    // UPDATE SINGLE 
+    @Operation(summary = "Update a single request")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public RecommendationRequest recommendationRequest(
+            @Parameter(name = "id") @RequestParam Long id,
+            @RequestBody @Valid RecommendationRequest incoming) {
+
+        RecommendationRequest recommendationRequest = recommendationRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(RecommendationRequest.class, id));
+
+                recommendationRequest.setRequesterEmail(incoming.getRequesterEmail());
+                recommendationRequest.setProfessorEmail(incoming.getProfessorEmail());
+                recommendationRequest.setExplanation(incoming.getExplanation());
+                recommendationRequest.setDateRequested(incoming.getDateRequested());
+                recommendationRequest.setDateNeeded(incoming.getDateNeeded());
+                recommendationRequest.setDone(incoming.getDone());
+
+        recommendationRequestRepository.save(recommendationRequest);
+
+        return recommendationRequest;
+    }
 }
