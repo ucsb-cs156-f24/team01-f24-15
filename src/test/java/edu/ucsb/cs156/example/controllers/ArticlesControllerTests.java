@@ -197,7 +197,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 assertEquals(expectedJson, responseString);
         }
 
-/*        @WithMockUser(roles = { "ADMIN", "USER" })
+        @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
         public void admin_can_edit_an_existing_article() throws Exception {
                 // arrange
@@ -273,5 +273,5 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 assertEquals("Articles with id 67 not found", json.get("message"));
 
         }
-*/
+
 }

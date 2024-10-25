@@ -98,7 +98,7 @@ public class ArticlesController extends ApiController {
      * @param incoming the new article
      * @return the updated article object
      */
-    /* 
+
     @Operation(summary= "Update a single article")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
@@ -119,5 +119,5 @@ public class ArticlesController extends ApiController {
 
         return article;
     }
-*/
+
 }
