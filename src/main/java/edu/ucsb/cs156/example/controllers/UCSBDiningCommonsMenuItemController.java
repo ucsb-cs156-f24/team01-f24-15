@@ -54,7 +54,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
      * @param id the id of the menu item
      * @return a UCSBDiningCommonMenuItem
      */
-    /**
     @Operation(summary= "Get a menu item")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
@@ -65,7 +64,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
         return ucsbdiningcommonmenuitem;
     }
-    */
 
     /**
      * This method creates a new diningcommons. Accessible only to users with the role "ROLE_ADMIN".
@@ -121,7 +119,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
      * @param incoming the new item
      * @return the updated item object
      */
-    /**
     @Operation(summary= "Update a single item")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
@@ -140,5 +137,4 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
         return ucsbdiningcommonmenuitem;
     }
-    */
 }
