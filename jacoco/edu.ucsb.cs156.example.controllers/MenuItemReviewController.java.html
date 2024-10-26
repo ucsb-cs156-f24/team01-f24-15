@@ -60,7 +60,7 @@ import java.time.LocalDateTime;
      * @param id the id of the review
      * @return a MenuItemReview
      */
-    @Operation(summary= &quot;Get a single review by id&quot;)
+    @Operation(summary= &quot;Get a single review&quot;)
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;&quot;)
     public MenuItemReview getById(
@@ -127,6 +127,35 @@ import java.time.LocalDateTime;
 
 <span class="fc" id="L128">        menuItemReviewRepository.delete(menuItemReview);</span>
 <span class="fc" id="L129">        return genericMessage(&quot;MenuItemReview with id %s deleted&quot;.formatted(id));</span>
+    }
+
+    /**
+     * Update a single review
+     * 
+     * @param id       id of the review to update
+     * @param incoming the new review
+     * @return the updated review object
+     */
+    @Operation(summary= &quot;Update a single review&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
+    @PutMapping(&quot;&quot;)
+    public MenuItemReview updateMenuItemReview(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id,
+            @RequestBody @Valid MenuItemReview incoming) {
+
+<span class="fc" id="L146">        MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)</span>
+<span class="fc" id="L147">                .orElseThrow(() -&gt; new EntityNotFoundException(MenuItemReview.class, id));</span>
+
+<span class="fc" id="L149">        menuItemReview.setItemId(incoming.getItemId());</span>
+<span class="fc" id="L150">        menuItemReview.setReviewerEmail(incoming.getReviewerEmail());</span>
+<span class="fc" id="L151">        menuItemReview.setStars(incoming.getStars());</span>
+<span class="fc" id="L152">        menuItemReview.setDateReviewed(incoming.getDateReviewed());</span>
+<span class="fc" id="L153">        menuItemReview.setComments(incoming.getComments());</span>
+
+
+<span class="fc" id="L156">        menuItemReviewRepository.save(menuItemReview);</span>
+
+<span class="fc" id="L158">        return menuItemReview;</span>
     }
 
 }
