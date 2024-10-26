@@ -60,7 +60,7 @@
                   {
                     "column": {
                       "name": "DATE_ADDED",
-                      "type": "VARCHAR(255)"
+                      "type": "TIMESTAMP"
                     }
                   }
                 ],

@@ -25,5 +25,5 @@ public class Articles {
     private String url;
     private String explanation;
     private String email; /* (of person that submitted it)*/
-    private String dateAdded;
+    private LocalDateTime dateAdded;
 }
