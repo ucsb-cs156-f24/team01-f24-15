@@ -98,7 +98,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
      * @param id the id of the item to delete
      * @return a message indicating the date was deleted
      */
-    /**
     @Operation(summary= "Delete a UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
@@ -110,7 +109,6 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
                 ucsbDiningCommonsMenuItemRepository.delete(ucsbdiningcommonmenuitem);
         return genericMessage("UCSBDiningCommonsMenuItem with id %s deleted".formatted(id));
     }
-    */
 
     /**
      * Update a single item
