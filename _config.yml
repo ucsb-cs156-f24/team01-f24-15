@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team01-f24-15
 owner: ucsb-cs156-f24
 repo_name: team01-f24-15
-pull_requests: [{"author":{"id":"U_kgDOBkByCg","is_bot":false,"login":"Nopesy","name":"Cooper Hawley"},"headRefName":"DiningCommonsMenuItem-Controller","number":61,"title":"Add DELETE endpoint for a specific record in UCSBDiningCommonsMenuItem","url":"https://github.com/ucsb-cs156-f24/team01-f24-15/pull/61"}]
+pull_requests: []
